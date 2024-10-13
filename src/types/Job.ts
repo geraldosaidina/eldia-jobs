@@ -1,6 +1,6 @@
 export interface Job{
     title: string,
     location: string,
-    salary?: number,
+    salary: number,
     id: string
 }
