@@ -1,27 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <JobsList :jobs = "jobs"/>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref  } from 'vue';
+import { Job } from './types/Job';
+import JobsList from './components/JobsList.vue';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { JobsList},
+  setup(){
+    const jobs = ref<Job[]>([
+      {title: 'Manager', location: 'Manchester', salary: 30000, id: '1'},
+      {title: 'Java Engineer', location: 'Geneva', salary: 100000, id: '2'},
+      {title: 'Front-end engineer', location: 'Maputo', salary: 80000, id: '3'},
+      {title: 'Project Manager', location: 'Málaga', id: '1'},
+    ]);
+
+    return {jobs}
+
+  },
+  
+  
 });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
